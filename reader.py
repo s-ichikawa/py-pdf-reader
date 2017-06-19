@@ -12,16 +12,18 @@ laparams = LAParams()
 # 縦書き文字を横並びで出力する
 laparams.detect_vertical = True
 device = TextConverter(rsrcmgr, rettxt, codec='utf-8', laparams=laparams)
-# 処理するPDFを開く
+
 argvs = sys.argv
 if len(argvs) != 2:
     print('please input file path.')
     quit()
+
 path = argvs[1]
 if not os.path.exists(path):
     print(path + ' is invalid file path.')
     quit()
 
+# 処理するPDFを開く
 fp = open(path, 'rb')
 interpreter = PDFPageInterpreter(rsrcmgr, device)
 
